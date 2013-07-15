@@ -1,8 +1,7 @@
 
 	/**
 	 * 实例：
-	 * var inputImgFactory = new InputImgFactory();
-	 * var files = inputImgFactory.getFiles();
+	 * var localImg = inputImgFactory.factoryMethod(event);
 	 */
 	// 创建抽象类工厂
 	var LocalImgFactory = {
@@ -11,21 +10,15 @@
 		},
 		// 调用对象工厂方法创建对象
 		// 调用对象的getFiles()方法，获取图片文件
-		handleFiles: function(files) {
-			// 创建LocalImg对象
-			var localImg = this.createUploadImg(files);		
-
-			localImg.filter();				// 过滤文件
-			localImg.preview();				// 预览图片的缩略图
-			localImg.uploadTo();			// 上传最终显示缩略图的图片
- 
+		factoryMethod: function(event) {
+			return this.createLocalImg(event);
 		}
 	};
 
 	// 对象工厂inputImgFactory
 	var inputImgFactory = Object.create(LocalImgFactory);
-	inputImgFactory.createUploadImg = function(files) {					// 重写createLocalImg方法
-		return new InputImg(files);
+	inputImgFactory.createLocalImg = function(event) {					// 重写createLocalImg方法
+		return new InputImg(event);
 	};
 	// 对象工厂dragImgFactory
 	var dragImgFactory = Object.create(LocalImgFactory);

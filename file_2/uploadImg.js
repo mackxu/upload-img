@@ -19,11 +19,16 @@
 			// 根据特性创建不同的对象
 			// 通过创建的对象调用对应的handleFiles()方法
 			inputFile.addEventListener('change', function(event) {
-				var event = event || window.event;
-				var target = event.target || event.srcElement;
-				var files = target.files;
-
-				inputImgFactory.handleFiles(files);							// 创建对象、处理文件
+				// 创建localImg类对象
+				var localImg = inputImgFactory.factoryMethod(event);
+				localImg.filter();
+				console.log(localImg.files);	
+				// 缩略图预览
+				// localImg.preview();
+				// 为上传按钮添加监听事件程序
+				uploadBtn.addEventListener('click', function() {
+					localImg.uploadTo(url);
+				}, false);
 			}, false);
 
 			this.dragImgFiles(dropzone, url);
