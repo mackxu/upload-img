@@ -17,11 +17,13 @@
 	.clearfix {
 		*zoom: 1;
 	}
-	.pre-image {
+	.show {
 		width: 600px;
 		min-height: 150px;
 		border: 1px solid #000;
 		padding: 8px;
+
+		position: relative;
 	}
 	.pre-image li {
 		width: 160px;
@@ -45,4 +47,15 @@
 
 		position: absolute;
 		bottom: 0;
+	}
+
+	.dropzone {
+		width: 616px;
+		height: 120px;
+
+		position: absolute;
+		top: 0;
+		left: 0;
+
+
 	}

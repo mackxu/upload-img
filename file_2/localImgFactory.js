@@ -22,6 +22,6 @@
 	};
 	// 对象工厂dragImgFactory
 	var dragImgFactory = Object.create(LocalImgFactory);
-	dragImgFactory.createLocalImg = function() {
-		return new DragImg();
+	dragImgFactory.createLocalImg = function(event) {
+		return new DragImg(event);
 	};

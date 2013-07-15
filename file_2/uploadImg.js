@@ -14,7 +14,7 @@
 			// 缩略图预览列表
 			var list = container.getElementsByClassName('pre-image')[0];
 			// 所有进度条
-			var processBar = list.getElementsByClassName('process-bar');
+			var processBars = list.getElementsByClassName('process-bar');
 			// 上传按钮
 			var uploadBtn = container.getElementsByClassName('upload-btn')[0];
 			var url = uploadBtn.getAttribute('data-uploadto');				// 上传url地址
@@ -30,22 +30,41 @@
 				localImg.preview(list);
 				// 为上传按钮添加监听事件程序
 				uploadBtn.addEventListener('click', function() {
-					localImg.uploadTo(url, processBar);
+					localImg.uploadTo(url, processBars);
 				}, false);
 			}, false);
 
-			this.dragImgFiles(dropzone, url);
+			this.dragImgFiles(dropzone, url, list, processBars, uploadBtn);
 
 		},
-		dragImgFiles: function(dropzone, url) {
-			dropzone.addEventListener('dragenter', function() {
-
+		dragImgFiles: function(dropzone, url, list, processBars, uploadBtn) {
+			dropzone.addEventListener('dragenter', function(event) {
+				console.log('dragenter');
+				event.preventDefault();
+				CSS.setCSS(dropzone, {'backgroundColor': 'rgba(0, 0, 0, 0.6)'});
 			}, false);
-			dropzone.addEventListener('dragleave', function() {}, false);
-			dropzone.addEventListener('dragover', function() {}, false);
+			dropzone.addEventListener('dragleave', function(event) {// 当文件离开释放区域
+				event.preventDefault();
+				CSS.setCSS(dropzone, {'backgroundColor': ''});
+			}, false);
+			dropzone.addEventListener('dragover', function(event) {
+				event.preventDefault();
+				event.stopPropagation();
+			}, false);
 			dropzone.addEventListener('drop', function(event) {
-				var files = event.dataTransfer.files;
-				dragImgFactory.handleFiles(files);
+				event.preventDefault();
+				event.stopPropagation();
+				CSS.setCSS(dropzone, {'backgroundColor': ''});
+				
+				// 创建localImg类对象
+				var localImg = dragImgFactory.factoryMethod(event);
+				localImg.filter();	
+				// 缩略图预览
+				localImg.preview(list);
+				// 为上传按钮添加监听事件程序
+				uploadBtn.addEventListener('click', function() {
+					localImg.uploadTo(url, processBars);
+				}, false);
 			}, false);
 		}
 	};
