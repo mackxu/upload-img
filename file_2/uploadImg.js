@@ -11,6 +11,10 @@
 			var inputFile = container.getElementsByClassName('upload-img')[0];
 			// 拖拽文件的目标元素
 			var dropzone = container.getElementsByClassName('dropzone')[0];
+			// 缩略图预览列表
+			var list = container.getElementsByClassName('pre-image')[0];
+			// 所有进度条
+			var processBar = list.getElementsByClassName('process-bar');
 			// 上传按钮
 			var uploadBtn = container.getElementsByClassName('upload-btn')[0];
 			var url = uploadBtn.getAttribute('data-uploadto');				// 上传url地址
@@ -21,13 +25,12 @@
 			inputFile.addEventListener('change', function(event) {
 				// 创建localImg类对象
 				var localImg = inputImgFactory.factoryMethod(event);
-				localImg.filter();
-				console.log(localImg.files);	
+				localImg.filter();	
 				// 缩略图预览
-				// localImg.preview();
+				localImg.preview(list);
 				// 为上传按钮添加监听事件程序
 				uploadBtn.addEventListener('click', function() {
-					localImg.uploadTo(url);
+					localImg.uploadTo(url, processBar);
 				}, false);
 			}, false);
 

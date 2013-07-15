@@ -37,12 +37,12 @@
 		height: 106px;
 	}
 	.process-bar {
-		width: 160px;
+		width: 0;
 		height: 25px;
 		background-color: #aaf6f8;
+		text-align: center;
+		line-height: 32px;
 
 		position: absolute;
 		bottom: 0;
-
-		display: none;
 	}
