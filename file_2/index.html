@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>图片上传</title>
+	<link rel="stylesheet" type="text/css" href="style/style.css">
+</head>
+<body>
+<div id="container">
+	<input type="file" name="upload-img" class="upload-img" multiple />
+	<div class="show">
+		<!-- 上传前有删除、上传时显示进度条 -->
+		<ul class="pre-image clearfix">
+			<li>
+				<div class="show-img"><img src="images/1.jpg" />
+					<div class="process-bar"></div></div>
+				<div class="label">这怎么能难倒我</div>
+			</li>
+			<li>
+				<div class="show-img"><img src="images/1.jpg" />
+					<div class="process-bar"></div></div>
+				<div class="label">这怎么能难倒我</div>
+			</li>
+		</ul>
+		<!-- 文件可拖拽区域 -->
+		<div class="dropzone"></div>
+	</div>
+	<button type="button" class="upload-btn" data-uploadto="upload.php">开始上传</button>
+</div>
+<script type="text/javascript" src="lib/util.js"></script>
+<script type="text/javascript" src="lib/class.js"></script>
+<script type="text/javascript" src="lib/event.js"></script>
+<script type="text/javascript" src="lib/css.js"></script>
+<script type="text/javascript" src="localImg.js"></script>
+<script type="text/javascript" src="localImgFactory.js"></script>
+<script type="text/javascript" src="uploadImg.js"></script>
+<script type="text/javascript">
+// 简单的实现接口
+uploadImg.init();
+</script>
+
+</body>
+</html>

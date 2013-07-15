@@ -1,0 +1,48 @@
+	body {
+		font-size: 12px;
+	}
+	ul {
+		list-style: none;
+		padding-left: 0;
+	}
+	/* 清除浮动 */
+	.clearfix:after {
+		content: '.';
+		display: block;
+		visibility: hidden;
+		height: 0;
+
+		clear: both;
+	}
+	.clearfix {
+		*zoom: 1;
+	}
+	.pre-image {
+		width: 600px;
+		min-height: 150px;
+		border: 1px solid #000;
+		padding: 8px;
+	}
+	.pre-image li {
+		width: 160px;
+		float: left;
+		margin: 0 4px;
+	}
+	.label {
+		text-align: center;
+	}
+	.show-img {
+		position: relative;
+		width: 160px;
+		height: 106px;
+	}
+	.process-bar {
+		width: 160px;
+		height: 25px;
+		background-color: #aaf6f8;
+
+		position: absolute;
+		bottom: 0;
+
+		display: none;
+	}
